@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Map_Sample.MainPage"
+             xmlns:local="clr-namespace:Map_Sample"
+             xmlns:maps="clr-namespace:Syncfusion.SfMaps.XForms;assembly=Syncfusion.SfMaps.XForms">
+    <ContentPage.Content>
+        <maps:SfMaps BackgroundColor="White"
+                     Margin="10">
+            <maps:SfMaps.Layers>
+                <maps:ImageryLayer>
+                    <maps:ImageryLayer.Markers>
+                        <local:CustomMarker Country="India"
+                                            Latitude="20.593683"
+                                            Longitude="78.962883" />
+                        <local:CustomMarker Country="USA"
+                                            Latitude="38.8833"
+                                            Longitude="-77.0167" />
+                        <local:CustomMarker  Country="Brazil"
+                                             Latitude="-15.7833"
+                                             Longitude="-47.8667" />
+                    </maps:ImageryLayer.Markers>
+                    <maps:ImageryLayer.MarkerSettings>
+                        <maps:MapMarkerSetting MarkerIcon="Image"
+                                               VerticalAlignment="Near"
+                                               ImageSource="pin.png"
+                                               IconSize="15">
+                            <maps:MapMarkerSetting.TooltipSettings>
+                                <maps:TooltipSetting ShowTooltip="True"
+                                                     BackgroundColor="Aqua"
+                                                     StrokeColor="Black"
+                                                     StrokeWidth="1"
+                                                     Duration="1000">
+                                    <maps:TooltipSetting.TooltipTemplate>
+                                        <DataTemplate>
+                                            <StackLayout HeightRequest="70"
+                                                         WidthRequest="130">
+                                                <Label Text="{Binding Country}"
+                                                       HeightRequest="30"
+                                                       VerticalOptions="Start"
+                                                       FontSize="20"
+                                                       HorizontalTextAlignment="Center" />
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Button Text="Ok"
+                                                            Margin="2"
+                                                            BackgroundColor="LightGray"
+                                                            Clicked="Ok_Clicked" />
+                                                    <Button Text="Cancel"
+                                                            Margin="2"
+                                                            Grid.Column="1"
+                                                            BackgroundColor="LightGray"
+                                                            Clicked="Cancel_Clicked" />
+                                                </Grid>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </maps:TooltipSetting.TooltipTemplate>
+                                </maps:TooltipSetting>
+                            </maps:MapMarkerSetting.TooltipSettings>
+                        </maps:MapMarkerSetting>
+                    </maps:ImageryLayer.MarkerSettings>
+                </maps:ImageryLayer>
+            </maps:SfMaps.Layers>
+        </maps:SfMaps>
+    </ContentPage.Content>
+</ContentPage>
